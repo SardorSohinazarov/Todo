@@ -5,13 +5,13 @@ namespace Todo.Application.Abstructions
 {
     public interface ITasksRepository
     {
-        ValueTask<Task> AddAsync(Task task);
-        ValueTask<Task> GetByIdAsync(int id);
-        ValueTask<IEnumerable<Task>> GetAllAsync();
-        ValueTask<IEnumerable<Task>> GetByPriorityAsync(PriorityLevel priority);
-        ValueTask<IEnumerable<Task>> GetByStateAsync(State state);
-        ValueTask<IEnumerable<Task>> GetByDeadlineAsync(DateTime deadline);
-        ValueTask<Task> UpdateAsync(Task task, int id);
-        ValueTask<Task> DeleteAsync(int id);
+        ValueTask<Task> AddAsync(Task task, CancellationToken cancellationToken = default);
+        ValueTask<Task> GetByIdAsync(int id, CancellationToken cancellationToken = default);
+        ValueTask<IEnumerable<Task>> GetAllAsync(CancellationToken cancellationToken = default);
+        ValueTask<IEnumerable<Task>> GetByPriorityAsync(PriorityLevel priority, CancellationToken cancellationToken = default);
+        ValueTask<IEnumerable<Task>> GetByStateAsync(State state, CancellationToken cancellationToken = default);
+        ValueTask<IEnumerable<Task>> GetByDeadlineAsync(DateTime deadline, CancellationToken cancellationToken = default);
+        ValueTask<Task> UpdateAsync(Task task, int id, CancellationToken cancellationToken = default);
+        ValueTask<Task> DeleteAsync(int id, CancellationToken cancellationToken = default);
     }
 }
