@@ -1,0 +1,48 @@
+﻿@page "/tasks";
+@using Task = Models.Task;
+@using Todo.UI.Services
+@inject ITasksService tasksService;
+
+<div class="row">
+    <div class="col" style="font-size:30px">
+        <div class="text-center">
+            All Tasks
+        </div>
+    </div>
+    <div class="col">
+        <div class="btn btn-primary px-4 float-end">
+            <i class="oi oi-plus"></i>
+        </div>
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Notes</th>
+            <th scope="col">State</th>
+            <th scope="col">Priority</th>
+            <th scope="col">Dedline</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var task in tasksService.Tasks)
+        {
+        <tr>
+            <th scope="row">@task.Title</th>
+            <td>@task.Notes</td>
+            <td>@task.State</td>
+            <td>@task.Priority</td>
+            <td>@task.Deadline</td>
+        </tr>         
+        }
+    </tbody>
+</table>
+
+@code {
+    protected override async System.Threading.Tasks.Task OnInitializedAsync()
+    {
+        await tasksService.GetAllTasksAsync();
+    }
+}
