@@ -1,3 +1,4 @@
+using Todo.API.Middlewares;
 using Todo.Application;
 using Todo.Infrastructure;
 
@@ -17,6 +18,7 @@ app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 app.UseAuthorization();
+app.UseMiddleware<GlobalExceptionHandlingMiddleware>();
 app.MapControllers();
 
 app.Run();
