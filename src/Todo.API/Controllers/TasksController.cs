@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Todo.Application.DTOs;
 using Todo.Application.Services;
 using Todo.Domain.Enums;
-using Task = Todo.Domain.Entities.Task;
 
 namespace Todo.API.Controllers
 {
@@ -15,7 +15,7 @@ namespace Todo.API.Controllers
             => _taskService = taskService;
 
         [HttpPost]
-        public async Task<IActionResult> CreateTaskAsync(Task task, CancellationToken cancellationToken = default)
+        public async Task<IActionResult> CreateTaskAsync(TaskDTO task, CancellationToken cancellationToken = default)
         {
             var createdTask = await _taskService.CreateTaskAsync(task, cancellationToken);
             return Ok(createdTask);
@@ -61,7 +61,7 @@ namespace Todo.API.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateTaskAsync(int id, Task task, CancellationToken cancellationToken = default)
+        public async Task<IActionResult> UpdateTaskAsync(int id, TaskDTO task, CancellationToken cancellationToken = default)
         {
             var updatedTask = await _taskService.UpdateTaskAsync(task, id, cancellationToken);
             if (updatedTask == null)
