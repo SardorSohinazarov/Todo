@@ -6,5 +6,6 @@ namespace Todo.UI.Services
     {
         public List<Task> Tasks { get; set; }
         public ValueTask GetAllTasksAsync();
+        public ValueTask<Task> GetTaskByIdAsync(int id);
     }
 }
