@@ -9,5 +9,6 @@ namespace Todo.UI.Services
         public ValueTask GetAllTasksAsync();
         public ValueTask<Task> GetTaskByIdAsync(int id);
         public ValueTask DeleteTaskByIdAsync(int id);
+        public ValueTask UpdateTaskByIdAsync(Task task);
     }
 }

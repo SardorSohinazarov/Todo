@@ -40,9 +40,8 @@
             <td>@task.Deadline</td>
             <td>
                 <a href=@link>
-                    <div class="btn btn-success"><i class="oi oi-eye"></i></div>
-                </a>
                     <div class="btn btn-warning"><i class="oi oi-pencil"></i></div>
+                </a>
                     <div class="btn btn-danger" @onclick="(() => Delete(task.Id))"><i class="oi oi-trash"></i></div>
             </td>
         </tr>   

@@ -27,6 +27,7 @@
     <div>
         <label for="state">State</label>
         <InputSelect id="state" @bind-Value="task.State" class="form-control">
+            <option value="@task.State" selected>@task.State</option>
             <option value="0">Todo</option>
             <option value="1">InProccess</option>
             <option value="2">Complated</option>
@@ -35,14 +36,16 @@
     <div>
         <label for="priority">Priority</label>
         <InputSelect id="priority" @bind-Value="task.Priority" class="form-control">
+            <option value="@task.Priority" selected>@task.Priority</option>
             <option value="0">None</option>
             <option value="1">Low</option>
             <option value="2">Medium</option>
             <option value="3">High</option>
         </InputSelect>
     </div>
+    <br />
 
-    <button type="submit">Create</button>
+    <button class="btn btn-success" type="submit">Create</button>
 </EditForm>
 
 @code {
