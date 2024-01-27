@@ -16,5 +16,10 @@ namespace Todo.UI.Services
             var result = await _httpClient.GetFromJsonAsync<List<Task>>("http://localhost:5176/api/Tasks/GetAllTasks");
             Tasks = result;
         }
+
+        public async ValueTask<Task> GetTaskByIdAsync(int id)
+        {
+            return await _httpClient.GetFromJsonAsync<Task>($"http://localhost:5176/api/Tasks/GetTaskById/{id}");
+        }
     }
 }

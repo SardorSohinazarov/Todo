@@ -5,15 +5,15 @@ VisualStudioVersion = 17.8.34316.72
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{8E09B4AC-BE64-4C49-AA08-0D00EE431C86}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todo.API", "src\Todo.API\Todo.API.csproj", "{37297DAC-7037-40C6-B067-E1071C199426}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Todo.API", "src\Todo.API\Todo.API.csproj", "{37297DAC-7037-40C6-B067-E1071C199426}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todo.UI", "src\Todo.UI\Todo.UI.csproj", "{15D8970B-DA29-4EB7-93C3-CE773EC2B3FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Todo.UI", "src\Todo.UI\Todo.UI.csproj", "{15D8970B-DA29-4EB7-93C3-CE773EC2B3FD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todo.Domain", "src\Todo.Domain\Todo.Domain.csproj", "{F5FA21AC-26BB-496C-B728-CBC9B878F00B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Todo.Domain", "src\Todo.Domain\Todo.Domain.csproj", "{F5FA21AC-26BB-496C-B728-CBC9B878F00B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todo.Application", "src\Todo.Application\Todo.Application.csproj", "{CBB46244-243B-4030-8897-003DB8731E1A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Todo.Application", "src\Todo.Application\Todo.Application.csproj", "{CBB46244-243B-4030-8897-003DB8731E1A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todo.Infrastructure", "src\Todo.Infrastructure\Todo.Infrastructure.csproj", "{25BF6C5C-571E-4C4F-8DB1-3B0409BC44CB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Todo.Infrastructure", "src\Todo.Infrastructure\Todo.Infrastructure.csproj", "{25BF6C5C-571E-4C4F-8DB1-3B0409BC44CB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

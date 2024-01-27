@@ -1,0 +1,39 @@
+﻿@page "/tasks/{Id:int}"
+@using Todo.UI.Services
+@inject ITasksService tasksService;
+<h3>Task</h3>
+
+<h1>@task.Title</h1>
+
+<h2>@task.Description</h2>
+<h2>@task.Notes</h2>
+
+<h3>@task.Deadline</h3>
+<h3>@task.CreatedAt</h3>
+<h3>@task.LastModifiedAt</h3>
+
+<h4>@task.State</h4>
+<h4>@task.Priority</h4>
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+
+    Models.Task task = new Models.Task()
+        {
+            Id = 000,
+            Title = "Yuklanmoqda ...",
+            CreatedAt = DateTime.Now,
+            Deadline = DateTime.Now,
+            Description = "Yuklanmoqda...",
+            LastModifiedAt = DateTime.Now,
+            Notes = "Yuklanmoqda ...",
+            Priority = Models.Enums.PriorityLevel.None,
+            State = Models.Enums.State.ToDo
+        };
+
+    protected override async System.Threading.Tasks.Task OnInitializedAsync()
+    {
+        task = await tasksService.GetTaskByIdAsync(Id);
+    }
+}
