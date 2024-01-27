@@ -1,0 +1,26 @@
+version: '3.4'
+
+services:
+  sqldata:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment:
+      - SA_PASSWORD=Numsey#2022
+      - ACCEPT_EULA=Y
+    volumes:
+      - c:\mssql:/var/opt/mssql/data
+    ports:
+      - "1450:1433"
+
+  todo.api:
+    image: ${DOCKER_REGISTRY-}todoapi
+    build:
+      context: .
+      dockerfile: src/Todo.API/Dockerfile
+
+  todo.ui:
+    image: ${DOCKER_REGISTRY-}todoui
+    build:
+      context: .
+      dockerfile: src/Todo.UI/Dockerfile
+
+
