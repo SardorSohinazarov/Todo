@@ -30,6 +30,7 @@
     <tbody>
         @foreach(var task in tasksService.Tasks)
         {
+        string link ="/tasks/" + task.Id;
         <tr>
             <th scope="row">@task.Title</th>
             <td>@task.Notes</td>
@@ -37,10 +38,13 @@
             <td>@task.Priority</td>
             <td>@task.Deadline</td>
             <td>
+                <a href=@link>
+                    <div class="btn btn-success"><i class="oi oi-eye"></i></div>
+                </a>
                     <div class="btn btn-warning"><i class="oi oi-pencil"></i></div>
                     <div class="btn btn-danger"><i class="oi oi-trash"></i></div>
             </td>
-        </tr>         
+        </tr>   
         }
     </tbody>
 </table>
@@ -51,3 +55,6 @@
         await tasksService.GetAllTasksAsync();
     }
 }
+
+<style>
+</style>
