@@ -3,21 +3,47 @@
 @inject ITasksService tasksService;
 @inject NavigationManager navigator;
 
-<h3>Task</h3>
+<EditForm Model="@task" OnSubmit="@Save">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div>
+        <label for="title">Title</label>
+        <InputText id="title" @bind-Value="task.Title" class="form-control" />
+    </div>
+    <div>
+        <label for="description">Description</label>
+        <InputTextArea id="description" @bind-Value="task.Description" class="form-control" />
+    </div>
+    <div>
+        <label for="notes">Notes</label>
+        <InputText id="notes" @bind-Value="task.Notes" class="form-control" />
+    </div>
+    <div>
+        <label for="deadline">Deadline</label>
+        <InputDate id="deadline" @bind-Value="task.Deadline" class="form-control" />
+    </div>
+    <div>
+        <label for="state">State</label>
+        <InputSelect id="state" @bind-Value="task.State" class="form-control">
+            <option value="@task.State" selected>@task.State</option>
+            <option value="0">Todo</option>
+            <option value="1">InProccess</option>
+            <option value="2">Complated</option>
+        </InputSelect>
+    </div>
+    <div>
+        <label for="priority">Priority</label>
+        <InputSelect id="priority" @bind-Value="task.Priority" class="form-control">
+            <option value="@task.Priority" selected>@task.Priority</option>
+            <option value="0">None</option>
+            <option value="1">Low</option>
+            <option value="2">Medium</option>
+            <option value="3">High</option>
+        </InputSelect>
+    </div>
 
-<h1>@task.Id</h1>
-
-<h1>@task.Title</h1>
-
-<h2>@task.Description</h2>
-<h2>@task.Notes</h2>
-
-<h3>@task.Deadline</h3>
-<h3>@task.CreatedAt</h3>
-<h3>@task.LastModifiedAt</h3>
-
-<h4>@task.State</h4>
-<h4>@task.Priority</h4>
+    <button type="submit">Create</button>
+</EditForm>
 
 @code {
     [Parameter]
@@ -47,5 +73,10 @@
         {
             navigator.NavigateTo("/tasks");
         }
+    }
+
+    private async System.Threading.Tasks.Task Save()
+    {
+        await tasksService.UpdateTaskByIdAsync(task);
     }
 }
