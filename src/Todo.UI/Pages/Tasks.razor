@@ -30,7 +30,8 @@
     <tbody>
         @foreach(var task in tasksService.Tasks)
         {
-        string link ="/task/" + task.Id;
+            int id = task.Id;
+            string link ="/task/" + task.Id;
         <tr>
             <th scope="row">@task.Title</th>
             <td>@task.Notes</td>
@@ -42,7 +43,7 @@
                     <div class="btn btn-success"><i class="oi oi-eye"></i></div>
                 </a>
                     <div class="btn btn-warning"><i class="oi oi-pencil"></i></div>
-                    <div class="btn btn-danger"><i class="oi oi-trash"></i></div>
+                    <div class="btn btn-danger" @onclick="(() => Delete(task.Id))"><i class="oi oi-trash"></i></div>
             </td>
         </tr>   
         }
@@ -53,6 +54,11 @@
     protected override async System.Threading.Tasks.Task OnInitializedAsync()
     {
         await tasksService.GetAllTasksAsync();
+    }
+
+    private async ValueTask Delete(int id)
+    {
+        await tasksService.DeleteTaskByIdAsync(id);
     }
 }
 

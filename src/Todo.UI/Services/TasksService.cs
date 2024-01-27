@@ -22,6 +22,12 @@ namespace Todo.UI.Services
             _navigationManager.NavigateTo("/tasks");
         }
 
+        public async ValueTask DeleteTaskByIdAsync(int id)
+        {
+            await _httpClient.DeleteAsync($"http://localhost:5176/api/Tasks/DeleteTask/{id}");
+            _navigationManager.NavigateTo("/tasks", forceLoad: true);
+        }
+
         public async ValueTask GetAllTasksAsync()
         {
             var result = await _httpClient.GetFromJsonAsync<List<Task>>("http://localhost:5176/api/Tasks/GetAllTasks");
