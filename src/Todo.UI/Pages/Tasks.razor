@@ -10,9 +10,9 @@
         </div>
     </div>
     <div class="col">
-        <div class="btn btn-primary px-4 float-end">
+        <a href="/create" class="btn btn-primary px-4 float-end">
             <i class="oi oi-plus"></i>
-        </div>
+        </a>
     </div>
 </div>
 
@@ -30,7 +30,7 @@
     <tbody>
         @foreach(var task in tasksService.Tasks)
         {
-        string link ="/tasks/" + task.Id;
+        string link ="/task/" + task.Id;
         <tr>
             <th scope="row">@task.Title</th>
             <td>@task.Notes</td>

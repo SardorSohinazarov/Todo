@@ -1,15 +1,26 @@
-﻿using Task = Todo.UI.Models.Task;
+﻿using Microsoft.AspNetCore.Components;
+using Task = Todo.UI.Models.Task;
 namespace Todo.UI.Services
 {
     public class TasksService : ITasksService
     {
         private readonly HttpClient _httpClient;
-        public TasksService(HttpClient httpClient)
+        private readonly NavigationManager _navigationManager;
+        public TasksService(
+            HttpClient httpClient,
+            NavigationManager navigationManager)
         {
             _httpClient = httpClient;
+            _navigationManager = navigationManager;
         }
 
         public List<Task> Tasks { get; set; } = new List<Task>();
+
+        public async ValueTask CreateTask(Task task)
+        {
+            var result = await _httpClient.PostAsJsonAsync("http://localhost:5176/api/Tasks/CreateTask", task);
+            _navigationManager.NavigateTo("/tasks");
+        }
 
         public async ValueTask GetAllTasksAsync()
         {

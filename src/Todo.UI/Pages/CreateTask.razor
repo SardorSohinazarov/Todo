@@ -1,0 +1,57 @@
+﻿@page "/create"
+@using System.ComponentModel.DataAnnotations
+@using Todo.UI.Services
+@using Models.Enums;
+
+@inject ITasksService tasksService;
+
+<EditForm Model="@task" OnSubmit="@Create">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div>
+        <label for="title">Title</label>
+        <InputText id="title" @bind-Value="task.Title" class="form-control"/>
+    </div>
+    <div>
+        <label for="description">Description</label>
+        <InputTextArea id="description" @bind-Value="task.Description" class="form-control" />
+    </div>
+    <div>
+        <label for="notes">Notes</label>
+        <InputText id="notes" @bind-Value="task.Notes" class="form-control" />
+    </div>
+    <div>
+        <label for="deadline">Deadline</label>
+        <InputDate id="deadline" @bind-Value="task.Deadline" class="form-control" />
+    </div>
+    <div>
+        <label for="state">State</label>
+        <InputSelect id="state" @bind-Value="task.State" class="form-control">
+            <option value="0">Todo</option>
+            <option value="1">InProccess</option>
+            <option value="2">Complated</option>
+        </InputSelect>
+    </div>
+    <div>
+        <label for="priority">Priority</label>
+        <InputSelect id="priority" @bind-Value="task.Priority" class="form-control">
+            <option value="0">None</option>
+            <option value="1">Low</option>
+            <option value="2">Medium</option>
+            <option value="3">High</option>
+        </InputSelect>
+    </div>
+
+    <button type="submit">Create</button>
+</EditForm>
+
+@code {
+    public Models.Task? task { get; set; }
+
+    protected override void OnInitialized() => task ??= new();
+
+    private async System.Threading.Tasks.Task Create()
+    {
+        await tasksService.CreateTask(task);
+    }
+}

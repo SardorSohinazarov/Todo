@@ -1,7 +1,11 @@
-﻿@page "/tasks/{Id:int}"
+﻿@page "/task/{Id:int}"
 @using Todo.UI.Services
 @inject ITasksService tasksService;
+@inject NavigationManager navigator;
+
 <h3>Task</h3>
+
+<h1>@task.Id</h1>
 
 <h1>@task.Title</h1>
 
@@ -17,7 +21,7 @@
 
 @code {
     [Parameter]
-    public int Id { get; set; }
+    public int? Id { get; set; }
 
     Models.Task task = new Models.Task()
         {
@@ -34,6 +38,14 @@
 
     protected override async System.Threading.Tasks.Task OnInitializedAsync()
     {
-        task = await tasksService.GetTaskByIdAsync(Id);
+        var result = await tasksService.GetTaskByIdAsync((int)Id);
+        if(result is not null)
+        {
+            task = result;
+        }
+        else
+        {
+            navigator.NavigateTo("/tasks");
+        }
     }
 }
