@@ -22,7 +22,6 @@ app.UseSwaggerUI();
 
 app.UseCors();
 
-app.UseHttpsRedirection();
 app.UseAuthorization();
 app.UseMiddleware<GlobalExceptionHandlingMiddleware>();
 app.MapControllers();
