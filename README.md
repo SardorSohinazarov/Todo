@@ -16,3 +16,6 @@
 > ## Tamom.
 >
 > Docker muhitida api va blazor projectlarni imagelarini yaratadi va sql serverni imageni > yuklab oladi va hammasini bir vaqtda ishlatib beradi. 
+>
+> 
+> ### Youtube *[video](https://www.youtube.com/watch?v=WhVxDwgjIpU)*.
