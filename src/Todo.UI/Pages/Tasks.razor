@@ -24,6 +24,7 @@
             <th scope="col">State</th>
             <th scope="col">Priority</th>
             <th scope="col">Dedline</th>
+            <th scope="col">Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -35,6 +36,10 @@
             <td>@task.State</td>
             <td>@task.Priority</td>
             <td>@task.Deadline</td>
+            <td>
+                    <div class="btn btn-warning"><i class="oi oi-pencil"></i></div>
+                    <div class="btn btn-danger"><i class="oi oi-trash"></i></div>
+            </td>
         </tr>         
         }
     </tbody>
